@@ -1,0 +1,6 @@
+goenv:
+  user: vagrant
+  global:
+    1.7.4
+  versions:
+    - 1.7.4
