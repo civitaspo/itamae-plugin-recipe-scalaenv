@@ -1,7 +1,7 @@
 module Itamae
   module Plugin
     module Recipe
-      module Goenv
+      module Scalaenv
         VERSION = "0.0.1"
       end
     end

@@ -1,22 +1,22 @@
 node.reverse_merge!(
-  goenv: {
+  scalaenv: {
     scheme:   'git',
     user:     ENV['USER'],
     versions: [],
   },
-  :'go-build' => {
+  :'scala-build' => {
     build_envs: [],
   }
 )
 
-unless node[:goenv][:goenv_root]
+unless node[:scalaenv][:scalaenv_root]
   case node[:platform]
   when 'osx', 'darwin'
     user_dir = '/Users'
   else
     user_dir = '/home'
   end
-  node[:goenv][:goenv_root] = File.join(user_dir, node[:goenv][:user], '.goenv')
+  node[:scalaenv][:scalaenv_root] = File.join(user_dir, node[:scalaenv][:user], '.scalaenv')
 end
 
-include_recipe 'goenv::install'
+include_recipe 'scalaenv::install'

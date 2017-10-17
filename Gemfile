@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in itamae-plugin-recipe-rbenv.gemspec
+# Specify your gem's dependencies in itamae-plugin-recipe-scalaenv.gemspec
 gemspec

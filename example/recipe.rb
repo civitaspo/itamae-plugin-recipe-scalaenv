@@ -1,1 +1,1 @@
-include_recipe "goenv::user"
+include_recipe "scalaenv::user"

@@ -1,13 +1,13 @@
-# Itamae::Plugin::Recipe::Goenv
+# Itamae::Plugin::Recipe::Scalaenv
 
-[Itamae](https://github.com/ryotarai/itamae) plugin to install golang with [goenv](https://github.com/syndbg/goenv)
+[Itamae](https://github.com/ryotarai/itamae) plugin to install scala with [scalaenv](https://github.com/scalaenv/scalaenv)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'itamae-plugin-recipe-goenv'
+gem 'itamae-plugin-recipe-scalaenv'
 ```
 
 And then execute:
@@ -16,18 +16,18 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install itamae-plugin-recipe-goenv
+    $ gem install itamae-plugin-recipe-scalaenv
 
 # Usage
 ## System wide installation
 
-Install goenv to /usr/local/goenv or some shared path
+Install scalaenv to /usr/local/scalaenv or some shared path
 
 ### Recipe
 
 ```ruby
 # your recipe
-include_recipe "goenv::system"
+include_recipe "scalaenv::system"
 ```
 
 ### Node
@@ -36,23 +36,17 @@ Use this with `itamae -y node.yml`
 
 ```yaml
 # node.yml
-goenv:
-  global:
-    1.7.4
+scalaenv:
+  global: scala-2.12.2
   versions:
-    - 1.7.4
-    - 1.6.3
-    - 1.5.4
+    - scala-2.11.8
+    - scala-2.10.6
 
-  # goenv install dir, optional (default: /usr/local/goenv)
-  goenv_root: "/path/to/goenv"
+  # scalaenv install dir, optional (default: /usr/local/scalaenv)
+  scalaenv_root: "/path/to/scalaenv"
 
   # specify scheme to use in git clone, optional (default: git)
   scheme: https
-
-  # Create /usr/local/goenv/cache, optional (default: false)
-  # See: https://github.com/syndbg/goenv/tree/bae243f3771731897aafb152126976653cb8213c/plugins/go-build#package-download-caching
-  cache: true
 ```
 
 ### .bashrc
@@ -60,20 +54,20 @@ goenv:
 Recommend to append this to .bashrc in your server.
 
 ```bash
-export GOENV_ROOT=/usr/local/goenv
-export PATH="${GOENV_ROOT}/bin:${PATH}"
-eval "$(goenv init -)"
+export SCALAENV_ROOT=/usr/local/scalaenv
+export PATH="${SCALAENV_ROOT}/bin:${PATH}"
+eval "$(scalaenv init -)"
 ```
 
 ## Installation for a user
 
-Install goenv to `~#{node[:goenv][:user]}/.goenv`
+Install scalaenv to `~#{node[:scalaenv][:user]}/.scalaenv`
 
 ### Recipe
 
 ```ruby
 # your recipe
-include_recipe "goenv::user"
+include_recipe "scalaenv::user"
 ```
 
 ### Node
@@ -82,21 +76,16 @@ Use this with `itamae -y node.yml`
 
 ```yaml
 # node.yml
-goenv:
+scalaenv:
   user: civitaspo
-  global:
-    1.7.4
+  global: scala-2.12.2
   versions:
-    - 1.7.4
-    - 1.6.3
-    - 1.5.4
+    - scala-2.11.8
+    - scala-2.10.6
 
   # specify scheme to use in git clone, optional (default: git)
   scheme: https
 
-  # Create ~/.goenv/cache, optional (default: false)
-  # See: https://github.com/syndbg/goenv/tree/bae243f3771731897aafb152126976653cb8213c/plugins/go-build#package-download-caching
-  cache: true
 ```
 
 ## Example
@@ -113,18 +102,17 @@ This plugin can be used for MItamae too. Put this repository under `./plugins` a
 
 ```rb
 node.reverse_merge!(
-  goenv: {
+  scalaenv: {
     user: 'civitaspo',
-    global: '1.7.4',
+    global: 'scala-2.12.2',
     versions: %w[
-      1.7.4
-      1.6.3
-      1.5.4
+      scala-2.11.8
+      scala-2.10.6
     ],
   }
 )
 
-include_recipe "goenv::user"
+include_recipe "scalaenv::user"
 ```
 
 ## License

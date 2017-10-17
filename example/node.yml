@@ -1,6 +1,6 @@
-goenv:
+scalaenv:
   user: vagrant
-  global:
-    1.7.4
+  global: scala-2.12.2
   versions:
-    - 1.7.4
+    - scala-2.11.8
+    - scala-2.10.6
